@@ -19,6 +19,10 @@
 
 `DOCKER_BUILDKIT=0 docker build -t teabots/poet -f docker/Dockerfile .`
 
+## Run
+
+`docker run --name poet --gpus all -itd -v .:/workspace/poet teabots/poet`
+
 ## ==> DEPRECATED
 
 This directory contains the Dockerfile for PoET. As the Deformable Attention module is by default not part of Pytorch, the module needs to be downloaded and build from scratch within the Docker container. Therefore, download the [module from the Deformable-DETR repository](https://github.com/fundamentalvision/Deformable-DETR/tree/main/models/ops).
