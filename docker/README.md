@@ -1,5 +1,26 @@
 # Dockerfile for PoET
 
+## Setup Docker
+
+1. Docker needs to have nvidia container toolkit [setup](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+2. Set the default container runtime to be `nvidia`, file "/etc/docker/daemon.json"
+    ```json
+    {
+      "runtimes": {
+        "nvidia": {
+          "args": [],
+          "path": "nvidia-container-runtime"
+        }
+      },
+      "default-runtime": "nvidia"
+    }
+    ```
+## Build
+
+`DOCKER_BUILDKIT=0 docker build -t teabots/poet -f docker/Dockerfile .`
+
+## ==> DEPRECATED
+
 This directory contains the Dockerfile for PoET. As the Deformable Attention module is by default not part of Pytorch, the module needs to be downloaded and build from scratch within the Docker container. Therefore, download the [module from the Deformable-DETR repository](https://github.com/fundamentalvision/Deformable-DETR/tree/main/models/ops).
 
 ## Docker Setup
